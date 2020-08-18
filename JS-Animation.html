@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Animation</title>
+  <style>
+    body{display: flex; justify-content: space-between;}
+    #parent, #parent2{width: 100px; height: 100px; background: black; display: flex; flex-wrap: wrap;}
+    .child{flex: 1 0 50%}
+    .child:nth-child(1){background: red;}
+    .child:nth-child(2){background: blue;}
+    .child:nth-child(3){background: green;}
+    .child:nth-child(4){background: brown;}
+  </style>
+</head>
+<body>
+  <div id="parent">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+
+  <div id="parent2">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+</body>
+<script>
+  //get parent elements
+  let parent = document.getElementById('parent'); 
+  let parent2 = document.getElementById('parent2');
+
+  //Set initial width and height
+  let eleWidth = 100;
+  let eleheight = 100;
+
+  //Method1
+  const timer = setInterval( () => {
+    parent.style.width = eleWidth + .10 + 'px';
+    parent.style.height = eleheight + .10 + 'px';
+    eleWidth+=.10;
+    eleheight+=.10;
+    }, 1);
+    
+    setTimeout( () => {
+      clearInterval(timer);
+    }, 5000)
+
+  //Method2
+  for(let i=0; i<=1000; i++){
+    setTimeout( ()=> {
+      parent2.style.width = eleWidth + .10 + 'px';
+      parent2.style.height = eleheight + .10 + 'px';
+      eleWidth+=.10;
+      eleheight+=.10;
+    }, i*5)
+  }
+</script>
+</html>
